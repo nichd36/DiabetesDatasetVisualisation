@@ -21,7 +21,7 @@ arizona_data = pd.DataFrame({
 st.map(data=arizona_data, zoom=3, color="#ffaa00", size=80000)
 
 def load_data():
-        df = pd.read_csv("/Users/nichdylan/Documents/DVID/Assignment 2/diabetes.csv")
+        df = pd.read_csv("diabetes.csv")
         return df
 
 df = load_data()

@@ -1,0 +1,86 @@
+def skin_histogram():
+        df_clean = load_data()
+
+        df_clean.loc[df_clean['SkinThickness'] == 0, 'SkinThickness'] = np.nan
+
+        df_clean = df_clean.dropna(subset=['SkinThickness'])
+
+        fig = px.histogram(df_clean, x='SkinThickness', color='Outcome', 
+                   histnorm='probability density', marginal='rug', 
+                   title='Distribution of Skin Thickness by Outcome')
+
+        median_diabetes = df_clean[df_clean['Outcome'] == 1]['SkinThickness'].median()
+        median_non_diabetes = df_clean[df_clean['Outcome'] == 0]['SkinThickness'].median()
+
+        fig.add_annotation(x=median_diabetes, y=0.02,
+                        text=f"Median (Diabetes): {median_diabetes:.0f}",
+                        showarrow=True, arrowhead=1, ax=50, ay=-120)
+
+        fig.add_annotation(x=median_non_diabetes, y=0.02,
+                        text=f"Median (Non-Diabetes): {median_non_diabetes:.0f}",
+                        showarrow=True, arrowhead=1, ax=-50, ay=-120)
+        st.plotly_chart(fig)
+
+        start_val = 0
+        end_val = 100
+        interval_size = 10
+
+        generated_intervals = generate_intervals(start_val, end_val, interval_size)
+        df_clean['SkinThickness_Group'] = df_clean['SkinThickness'].apply(lambda x: categorize(x, generated_intervals))
+        group_counts = df_clean['SkinThickness_Group'].value_counts().reset_index()
+        group_counts.columns = ['SkinThickness_Group', 'Count']
+
+        group_counts['SkinThickness_Group_Lower'] = group_counts['SkinThickness_Group'].str.split('-').str[0].astype(int)
+        group_counts = group_counts.sort_values(by='SkinThickness_Group_Lower')
+
+        fig = px.bar(group_counts, x='SkinThickness_Group', y='Count', color='Count',
+                labels={'Count': 'Number of Data Points'},
+                title='Number of Data Points in Each Skin Thickness Group',
+                height=500)
+        fig.update_traces(texttemplate='%{y}', textposition='outside')
+        fig.update_layout(hovermode='x')
+
+        df = df_clean
+
+        def filter_data(df, removed_groups):
+                return df[~df['SkinThickness_Group'].isin(removed_groups)]
+        
+        removed_groups = group_counts[group_counts['Count'] < 10]['SkinThickness_Group']
+
+        action = st.radio("Show data with outlier groups?:", ("Yes, show me outlier", "No"))
+        if action == "No":
+                df_filtered = filter_data(df, removed_groups)
+                group_counts_filtered = df_filtered['SkinThickness_Group'].value_counts().reset_index()
+                group_counts_filtered.columns = ['SkinThickness_Group', 'Count']
+                group_counts_filtered['SkinThickness_Group_Lower'] = group_counts_filtered['SkinThickness_Group'].str.split('-').str[0].astype(int)
+                group_counts_filtered = group_counts_filtered.sort_values(by='SkinThickness_Group_Lower')
+                fig = px.bar(group_counts_filtered, x='SkinThickness_Group', y='Count', color='Count',
+                        labels={'Count': 'Number of Data Points'},
+                        title='Number of Data Points in Each Skin Thickness Group (Outliers removed)',
+                        height=500)
+                fig.update_traces(texttemplate='%{y}', textposition='outside')
+                fig.update_layout(hovermode='x')
+                st.plotly_chart(fig)
+        else:
+                st.plotly_chart(fig)
+
+        df = filter_data(df, removed_groups)
+        total_count = df['SkinThickness_Group'].value_counts().reset_index()
+        total_count.columns = ['SkinThickness_Group', 'Total_Count']
+
+        diabetes_count = df.groupby('SkinThickness_Group')['Outcome'].sum().reset_index()
+
+        diabetes_percentage = pd.merge(total_count, diabetes_count, on='SkinThickness_Group')
+
+        diabetes_percentage['Percentage'] = (diabetes_percentage['Outcome'] / diabetes_percentage['Total_Count']) * 100
+
+        diabetes_percentage_sorted = diabetes_percentage.sort_values(by='SkinThickness_Group')
+        fig = px.bar(diabetes_percentage_sorted, x='SkinThickness_Group', y='Percentage', color='SkinThickness_Group',
+                labels={'Percentage': 'Percentage of Individuals with Diabetes'},
+                title='Percentage of Individuals with Diabetes in Each Skin Thickness Group',
+                hover_data={'Percentage': True},
+                color_continuous_scale='viridis',
+                height=500)
+        fig.update_traces(texttemplate='%{y:.2f}%', textposition='outside')
+        fig.update_layout(hovermode='x')
+        st.plotly_chart(fig)

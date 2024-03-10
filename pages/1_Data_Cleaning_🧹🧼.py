@@ -6,10 +6,10 @@ import plotly.graph_objects as go
 padding = 20
 
 st.title("Let's clean up the data! 🧼")
-st.image(image="/Users/nichdylan/Documents/DVID/Assignment 2/static/giphy.gif")
+st.image(image="static/giphy.gif")
 
 def load_data():
-        df = pd.read_csv("/Users/nichdylan/Documents/DVID/Assignment 2/diabetes.csv")
+        df = pd.read_csv("diabetes.csv")
         return df
 
 df = load_data()
@@ -24,7 +24,7 @@ st.header("Using the describe() function, let's take a peek into our dataset")
 st.write(df.describe())
 st.markdown("*Some of the columns (outside outcome and pregnancies) have a value as low as 0. This shows there are some invalid data.*")
 st.markdown("Prove its invalid:")
-st.image("/Users/nichdylan/Documents/DVID/Assignment 2/static/chat.jpeg")
+st.image("static/chat.jpeg")
 st.markdown("*Imagine the blood pressure was really 0* 🩸☠️😵")
 
 st.header("Checking how many 0️⃣s")

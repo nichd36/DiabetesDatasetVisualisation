@@ -11,11 +11,8 @@ import seaborn as sns
 
 st.title("Can we diagnose whether or not a patient is diabetic?")
 
-
-
-
 def load_clean_data():
-        df = pd.read_csv("/Users/nichdylan/Documents/DVID/Assignment 2/static/diabetes_clean.csv")
+        df = pd.read_csv("static/diabetes_clean.csv")
         return df
 
 def intro():

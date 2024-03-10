@@ -9,11 +9,11 @@ import seaborn as sns
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 def load_clean_data():
-        df = pd.read_csv("/Users/nichdylan/Documents/DVID/Assignment 2/static/diabetes_clean.csv")
+        df = pd.read_csv("static/diabetes_clean.csv")
         return df
 
 def load_data():
-        df = pd.read_csv("/Users/nichdylan/Documents/DVID/Assignment 2/diabetes.csv")
+        df = pd.read_csv("diabetes.csv")
         return df
 
 df = load_clean_data()

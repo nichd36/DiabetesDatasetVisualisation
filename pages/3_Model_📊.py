@@ -20,13 +20,13 @@ def intro():
         st.warning("***Please select an option***")
 
 def lstm():
-        model = tf.keras.models.load_model('static/74lstm_model.h5')
-
         df = load_clean_data()
         
         X = df.drop(columns=['Outcome'])  # Features
         y = df['Outcome']
         x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=2)
+
+        model = tf.keras.models.load_model('static/74lstm_model.h5')
 
         y_pred = model.predict(x_test)
         y_pred_binary = np.round(y_pred)

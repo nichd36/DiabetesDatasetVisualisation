@@ -17,7 +17,7 @@ def load_clean_data():
         return df
 
 def load_data():
-        df = pd.read_csv("static/diabetes.csv")
+        df = pd.read_csv("diabetes.csv")
         return df
 
 

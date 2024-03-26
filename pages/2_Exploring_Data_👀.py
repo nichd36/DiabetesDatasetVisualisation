@@ -694,7 +694,7 @@ def glucose_complete_histogram():
 
         fig = px.bar(group_counts, x='Glucose_Group', y='Count', color='Count',
                 labels={'Count': 'Number of Data Points'},
-                title='Number of Data Points in Each Skin Thickness Group',
+                title='Number of Data Points in Each Glucose Group',
                 height=500)
         fig.update_traces(texttemplate='%{y}', textposition='outside')
         fig.update_layout(hovermode='x')
@@ -715,7 +715,7 @@ def glucose_complete_histogram():
                 group_counts_filtered = group_counts_filtered.sort_values(by='Glucose_Group_Lower')
                 fig = px.bar(group_counts_filtered, x='Glucose_Group', y='Count', color='Count',
                         labels={'Count': 'Number of Data Points'},
-                        title='Number of Data Points in Each Skin Thickness Group (Outliers removed)',
+                        title='Number of Data Points in Each Glucose Group (Outliers removed)',
                         height=500)
                 fig.update_traces(texttemplate='%{y}', textposition='outside')
                 fig.update_layout(hovermode='x')

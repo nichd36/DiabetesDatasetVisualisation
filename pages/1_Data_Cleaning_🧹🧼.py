@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 padding = 20
+st.set_page_config(layout="wide", page_title="Data Cleaning - Nicholas Dylan", page_icon="foto.jpg")
 
 st.title("Let's clean up the data! 🧼")
 st.image(image="static/giphy.gif")

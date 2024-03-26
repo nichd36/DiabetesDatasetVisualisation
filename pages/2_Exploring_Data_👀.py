@@ -739,7 +739,7 @@ def glucose_complete_histogram():
 
         fig = px.bar(diabetes_percentage_sorted, x='Glucose_Group', y='Percentage', color='Glucose_Group',
                 labels={'Percentage': 'Percentage of Individuals with Diabetes'},
-                title='Percentage of Individuals with Diabetes in Each Skin Thickness Group',
+                title='Percentage of Individuals with Diabetes in Each Glucose Group',
                 hover_data={'Percentage': True},
                 color_continuous_scale='viridis',
                 height=500)

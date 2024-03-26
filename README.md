@@ -12,7 +12,7 @@ In total, there are **9** columns:
 | Variable name        | Description           |
 | ------------- |:------------- |
 | Pregnancies | Number of times pregnant |
-| Glucose | Plasma glucose concentration at 2 Hours in an oral glucose tolerance test or GTIT (Mg/DL) |
+| Glucose | Plasma glucose concentration at 2 Hours in an oral glucose tolerance test or OGTT (Mg/DL) |
 | BloodPressure | Diastolic blood pressure (mmHg) |
 | SkinThickness | Triceps skin fold thickness (mm) |
 | Insulin | 2-Hour serum insulin level (μIU/mL) |

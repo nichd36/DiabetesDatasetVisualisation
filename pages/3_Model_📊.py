@@ -11,6 +11,8 @@ import seaborn as sns
 import tensorflow as tf
 import numpy as np
 
+st.set_page_config(layout="wide", page_title="Model - Nicholas Dylan", page_icon="foto.jpg")
+
 st.title("Can we diagnose whether or not a patient is diabetic?")
 
 def load_clean_data():

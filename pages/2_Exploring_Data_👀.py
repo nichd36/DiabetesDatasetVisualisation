@@ -664,7 +664,7 @@ def glucose_complete_histogram():
 
         fig = px.histogram(df_clean, x='Glucose', color='Outcome', 
                    histnorm='probability density', marginal='rug', 
-                   title='Distribution of Skin Thickness by Outcome')
+                   title='Distribution of Glucose Level by Outcome')
 
         median_diabetes = df_clean[df_clean['Outcome'] == 1]['Glucose'].median()
         median_non_diabetes = df_clean[df_clean['Outcome'] == 0]['Glucose'].median()

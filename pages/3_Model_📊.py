@@ -9,6 +9,7 @@ from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 import tensorflow as tf
+import numpy as np
 
 st.title("Can we diagnose whether or not a patient is diabetic?")
 

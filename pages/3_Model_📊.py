@@ -26,7 +26,7 @@ def intro():
         st.warning("***Please select an option***")
 
 def lstm():
-        df = load_data()
+        df = load_clean_data()
         
         X = df.drop(columns=['Outcome'])  # Features
         y = df['Outcome']
@@ -59,7 +59,7 @@ def lstm():
 
 def logistic_regression():
         lr = LogisticRegression()
-        df = load_data()
+        df = load_clean_data()
         
         X = df.drop(columns=['Outcome'])  # Features
         y = df['Outcome']

@@ -191,7 +191,9 @@ feature = [[pregnancies, glucose, bp, skin, insulin, bmi, dpf, age]]
 result_lr = lr.predict(feature)
 result_svm = support_vm.predict(feature)
 result_naive = naive.predict(feature)
-result_lstm = lstm.predict(feature)
+
+feature_array = np.array(feature)
+result_lstm = lstm.predict(feature_array)
 
 if result_lr == 1:
     st.error("Patient predicted by Logistic Regression to have diabetes.")

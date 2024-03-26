@@ -28,3 +28,15 @@ df = load_data()
 
 st.header("Here is a preview of the dataset")
 df
+
+st.header("Variable Name and their Description")
+st.markdown("Pregnancies | Number of times pregnant")
+st.markdown("Glucose | 2-hour plasma glucose level (mg/dL), normal level <140 mg/DL")
+st.markdown("BloodPressure | Diastolic blood pressure (mmHg), normal <120/80 mmHg")
+st.markdown("SkinThickness | Triceps skin fold thickness (mm), average female's TSF: 23.6 ± 7.5 mm")
+st.markdown("Insulin | 2-hour serum insulin level (μIU/mL), normal 16-166 mIU/L")
+st.markdown("BMI | Body mass index")
+st.markdown("DiabetesPedigreeFunction | Diabetes likelihood depending on age and family history")
+st.markdown("Age | Age in years")
+st.markdown("Outcome | 1 (diabetes) or 0 (non-diabetes)")
+

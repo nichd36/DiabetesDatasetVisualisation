@@ -25,13 +25,13 @@ def intro():
         st.warning("***Please select an option***")
 
 def lstm():
-        df = load_clean_data()
+        df = load_data()
         
         X = df.drop(columns=['Outcome'])  # Features
         y = df['Outcome']
         x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=2)
 
-        model = tf.keras.models.load_model('static/74lstm_model.h5')
+        model = tf.keras.models.load_model('static/lstm.h5')
         x_test = x_test.iloc[:, :8]
 
         y_pred = model.predict(x_test)
@@ -56,7 +56,7 @@ def lstm():
 
 def logistic_regression():
         lr = LogisticRegression()
-        df = load_clean_data()
+        df = load_data()
         
         X = df.drop(columns=['Outcome'])  # Features
         y = df['Outcome']

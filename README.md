@@ -15,7 +15,7 @@ In total, there are **9** columns:
 | Glucose | Plasma glucose concentration at 2 Hours in an oral glucose tolerance test or GTIT (Mg/DL) |
 | BloodPressure | Diastolic blood pressure (mmHg) |
 | SkinThickness | Triceps skin fold thickness (mm) |
-| Insulin | 2-Hour serum insulin level (μh/mL) |
+| Insulin | 2-Hour serum insulin level (μIU/mL) |
 | BMI | Body mass index |
 | DiabetesPedigreeFunction | Diabetes likelihood depending on age and family history |
 | Age | Age in years |

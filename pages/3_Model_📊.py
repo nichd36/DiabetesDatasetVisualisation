@@ -55,6 +55,8 @@ def lstm():
         all_sample_title = 'Accuracy Score: {0}'.format(accuracy)
         plt.title(all_sample_title, size = 15);
 
+        st.pyplot()
+
 def logistic_regression():
         lr = LogisticRegression()
         df = load_data()
@@ -182,8 +184,7 @@ dpf = st.slider("Their DPF (diabetes pedigree function)?", 0.05, 2.5, 0.5)
 lr = LogisticRegression().fit(x_train, y_train)
 support_vm = svm.SVC().fit(x_train, y_train)
 naive = GaussianNB().fit(x_train, y_train)
-lstm = tf.keras.models.load_model('static/74lstm_model.h5')
-
+lstm = tf.keras.models.load_model('static/lstm.h5')
 
 feature = [[pregnancies, glucose, bp, skin, insulin, bmi, dpf, age]]
 

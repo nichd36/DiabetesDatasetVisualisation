@@ -1,7 +1,7 @@
 import streamlit as st
 
 padding = 20
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="About - Nicholas Dylan", page_icon="foto.jpg")
 
 st.title('Pima Female Indians Diabetes Dataset')
 

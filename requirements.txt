@@ -69,6 +69,7 @@ stack-data==0.6.3
 statsmodels==0.14.1
 streamlit==1.32.0
 tenacity==8.2.3
+tensorflow
 threadpoolctl==3.3.0
 toml==0.10.2
 toolz==0.12.1

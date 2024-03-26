@@ -16,6 +16,11 @@ def load_clean_data():
         df = pd.read_csv("static/diabetes_clean.csv")
         return df
 
+def load_data():
+        df = pd.read_csv("static/diabetes.csv")
+        return df
+
+
 def intro():
         st.warning("***Please select an option***")
 

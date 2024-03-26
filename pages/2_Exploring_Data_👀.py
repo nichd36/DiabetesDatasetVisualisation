@@ -7,6 +7,8 @@ import plotly.express as px
 import seaborn as sns
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_page_config(layout="wide", page_title="Exploring Data - Nicholas Dylan", page_icon="foto.jpg")
+
 
 def load_clean_data():
         df = pd.read_csv("static/diabetes_clean.csv")

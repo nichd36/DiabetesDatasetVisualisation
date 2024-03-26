@@ -195,6 +195,8 @@ result_naive = naive.predict(feature)
 feature_array = np.array(feature)
 result_lstm = np.round(lstm.predict(feature_array))
 
+st.write(result_lstm)
+
 if result_lr == 1:
     st.error("Patient predicted by Logistic Regression to have diabetes.")
 elif result_lr == 0:

@@ -31,7 +31,7 @@ df
 
 st.header("Variable Name and their Description")
 st.markdown("Pregnancies | Number of times pregnant")
-st.markdown("Glucose | Plasma glucose concentration at 2 Hours in an oral glucose tolerance test or GTIT (Mg/DL), normal level <140 mg/DL")
+st.markdown("Glucose | Plasma glucose concentration at 2 Hours in an oral glucose tolerance test (Mg/DL), normal level <140 mg/DL")
 st.markdown("BloodPressure | Diastolic blood pressure (mmHg), normal <120/80 mmHg")
 st.markdown("SkinThickness | Triceps skin fold thickness (mm), average female's TSF: 23.6 ± 7.5 mm")
 st.markdown("Insulin | 2-hour serum insulin level (μIU/mL), normal 16-166 mIU/L")

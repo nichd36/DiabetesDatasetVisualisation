@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
+import tensorflow as tf
 
 st.title("Can we diagnose whether or not a patient is diabetic?")
 
@@ -17,6 +18,28 @@ def load_clean_data():
 
 def intro():
         st.warning("***Please select an option***")
+
+def lstm():
+        model = tf.keras.models.load_model('static/74lstm_model.h5')
+        y_pred = model.predict(x_test)
+        y_pred_binary = np.round(y_pred)
+        cm = confusion_matrix(y_test, y_pred_binary)
+        accuracy = accuracy_score(y_test, y_pred_binary)
+        
+        x_labels = ['Predicted negative', 'Predicted positive']
+        y_labels = ['Actual negative', 'Actual positive']
+        
+        plt.figure(figsize=(9,9))
+        sns.heatmap(cm, annot=True, fmt=".3f", linewidths=.5, square = True, cmap = 'Blues_r');
+        
+        plt.xticks(ticks=[0.5, 1.5], labels=x_labels)
+        plt.yticks(ticks=[0.5, 1.5], labels=y_labels)
+        
+        plt.ylabel('Actual label');
+        plt.xlabel('Predicted label');
+        
+        all_sample_title = 'Accuracy Score: {0}'.format(accuracy)
+        plt.title(all_sample_title, size = 15);
 
 def logistic_regression():
         lr = LogisticRegression()
@@ -121,7 +144,8 @@ page_names_to_funcs = {
         "—": intro,
         "Logistic Regression": logistic_regression,
         "Support Vector Machine (SVM)": support_vector,
-        "Gaussian Naive Bayes": gaussianNB
+        "Gaussian Naive Bayes": gaussianNB,
+        "LSTM": lstm
 }
 
 section_name = st.selectbox("Choose a model", page_names_to_funcs.keys())
@@ -144,12 +168,15 @@ dpf = st.slider("Their DPF (diabetes pedigree function)?", 0.05, 2.5, 0.5)
 lr = LogisticRegression().fit(x_train, y_train)
 support_vm = svm.SVC().fit(x_train, y_train)
 naive = GaussianNB().fit(x_train, y_train)
+lstm = tf.keras.models.load_model('static/74lstm_model.h5')
+
 
 feature = [[pregnancies, glucose, bp, skin, insulin, bmi, dpf, age]]
 
 result_lr = lr.predict(feature)
 result_svm = support_vm.predict(feature)
 result_naive = naive.predict(feature)
+result_lstm = lstm.predict(feature)
 
 if result_lr == 1:
     st.error("Patient predicted by Logistic Regression to have diabetes.")
@@ -165,3 +192,8 @@ if result_naive == 1:
     st.error("Patient predicted by Naive Bayes to have diabetes.")
 elif result_naive == 0:
     st.success("Patient predicted by Naive Bayes not to have diabetes.")
+
+if result_lstm == 1:
+    st.error("Patient predicted by LSTM to have diabetes.")
+elif result_lstm == 0:
+    st.success("Patient predicted by LSTM not to have diabetes.")

@@ -12,8 +12,8 @@ In total, there are **9** columns:
 | Variable name        | Description           |
 | ------------- |:------------- |
 | Pregnancies | Number of times pregnant |
-| Glucose | 2-hour plasma glucose level |
-| BloodPressure | Measured blood pressure (mmHg) |
+| Glucose | 2-hour plasma glucose level (Mg/DL) |
+| BloodPressure | Diastolic blood pressure (mmHg) |
 | SkinThickness | Triceps skin fold thickness (mm) |
 | Insulin | 2-Hour serum insulin level (μIU/mL) |
 | BMI | Body mass index |

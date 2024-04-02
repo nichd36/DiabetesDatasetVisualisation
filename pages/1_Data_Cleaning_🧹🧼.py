@@ -25,8 +25,7 @@ st.header("Using the describe() function, let's take a peek into our dataset")
 st.write(df.describe())
 st.markdown("*Some of the columns (outside outcome and pregnancies) have a value as low as 0. This shows there are some invalid data.*")
 st.markdown("Prove its invalid:")
-st.image("static/chat.jpeg")
-st.markdown("*Imagine the blood pressure was really 0* 🩸☠️😵")
+
 
 st.header("Checking how many 0️⃣s")
 exclude_columns = ["Outcome", "Pregnancies"]
